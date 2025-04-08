@@ -1,15 +1,16 @@
 package ru.maikl.lec1;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class ScannerPr {
     public static void main(String[] args) {
         System.out.println("Hello Scanner");
-        File file = new File("test.txt");
+        String fileName = "test.txt";
+        File file = new File(fileName);
         System.out.println(file.exists());
         try {
             file.createNewFile();
@@ -55,5 +56,38 @@ public class ScannerPr {
         System.out.println(file.getParent());
         System.out.println("o----File directory-----");
 
+        System.out.println("-----File file and directory-----");
+        File newFile = new File(fileDir, fileName);
+//        File newFileSep = new File(fileDir + File.separator + fileName);
+        try {
+            boolean fileCreated = newFile.createNewFile();
+            if (fileCreated) {
+                System.out.println("Файл создан: " + newFile.getAbsolutePath());
+            } else {
+                System.out.println("Файл уже существует или не может быть создан");
+            }
+        } catch (IOException e) {
+            System.out.println("Ошибка при создании файла: " + e.getMessage());
+        } catch (SecurityException e) {
+            System.out.println("Нет прав на создание файла: " + e.getMessage());
+        }
+        System.out.println(newFile.getParentFile());
+
+        try {
+            System.out.println(newFile.getCanonicalPath());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        System.out.println("o----File file and directory-----");
+
+//        File file1 = new File("C:/test/file.txt");  // Абсолютный путь (Windows)
+//        File file2 = new File("data/config.json");  // Относительный путь
+//        File file3 = new File("C:/test", "file.txt"); // Эквивалентно new File("C:/test/file.txt")
+//        File parentDir = new File("C:/test");
+//        File file4 = new File(parentDir, "file.txt"); // Эквивалентно new File("C:/test/file.txt")
+//        File file5 = new File("C:" + File.separator + "test" + File.separator + "file.txt");
+//        //Относительные пути Отсчитываются от рабочей директории (System.getProperty("user.dir")).
+//        Path path = Paths.get("C:/test/file.txt");  // или Path.of() (Java 11+)
+        System.out.println(System.getProperty("user.dir"));
     }
 }
