@@ -25,5 +25,6 @@ public class L1Main {
         System.out.println(bs[0]);
         System.out.println(as == bs);
         System.out.println(as.equals(bs));
+        System.out.println("Bye");
     }
 }
