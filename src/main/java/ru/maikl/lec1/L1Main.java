@@ -17,5 +17,13 @@ public class L1Main {
         System.out.println(Arrays.toString(ints2));
         System.out.println(Arrays.toString(ints2[0]));
         System.out.println(ints2[0].length);
+
+        int[] as  = new int[3];
+        int[] bs = as;
+        as[0] = 30;
+        System.out.println(as[0]);
+        System.out.println(bs[0]);
+        System.out.println(as == bs);
+        System.out.println(as.equals(bs));
     }
 }
