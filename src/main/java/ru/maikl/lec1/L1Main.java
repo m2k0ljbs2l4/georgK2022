@@ -12,10 +12,5 @@ public class L1Main {
         ArraysPr arraysPr = new ArraysPr(ints);
         System.out.println(Arrays.toString(ints));
         System.out.println(arraysPr);
-
-        int[][] ints2 = new int[3][0];
-        System.out.println(Arrays.toString(ints2));
-        System.out.println(Arrays.toString(ints2[0]));
-        System.out.println(ints2[0].length);
     }
 }
