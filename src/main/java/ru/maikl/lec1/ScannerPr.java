@@ -1,10 +1,11 @@
 package ru.maikl.lec1;
 
 import java.io.*;
-import java.nio.file.FileSystems;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.net.URI;
+import java.net.URL;
+import java.net.URLConnection;
+import java.net.http.HttpClient;
+import java.nio.file.*;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
@@ -133,8 +134,16 @@ public class ScannerPr {
         System.out.println(full);
         System.out.println(fullP);
 
-
-//        Files.createFile(Paths.get("newfile.txt"));
+        Path path1 = Paths.get("newfile.txt");
+        try {
+            Files.createFile(path1);
+//            Files.createDirectory(Paths.get("testPathsDir"));
+//            Files.createFile(Paths.get("testPathsDir","testPathOf.txt"));
+        } catch (FileAlreadyExistsException e) {
+            System.out.println("Файл уже создан " + path1.toAbsolutePath());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 //        Files.createDirectory(Paths.get("newdir"));
 //        Files.createDirectories(Paths.get("dir/subdir")); // Создаст все недостающие папки
 //        Files.delete(path); // Кидает исключение, если файла нет
