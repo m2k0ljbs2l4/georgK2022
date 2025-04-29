@@ -21,5 +21,6 @@ public class Main {
         System.out.println(greeterProxy.greet("Alex"));
         Lock lock = new ReentrantLock();
         lock.lock();
+
     }
 }
